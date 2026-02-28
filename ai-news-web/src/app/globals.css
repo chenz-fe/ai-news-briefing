@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+/* Notion 深色模式配色：主背景 #2F3438，侧栏/块 #373C3F，链接 #529CCA */
+:root {
+  --background: #2f3438;
+  --foreground: #e5e5e5;
+  --surface: #373c3f;
+  --border: #3f4448;
+  --muted: #9ca3af;
+  --accent: #529cca;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* 新闻/博客站常用：列表项 hover 高亮 */
+.article-list-item {
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* 正文排版：层级清晰、行高舒适 */
+.prose {
+  color: var(--foreground);
+  font-size: 0.9375rem;
+  line-height: 1.72;
+  letter-spacing: 0.01em;
+}
+
+.prose h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--foreground);
+  letter-spacing: -0.01em;
+}
+
+.prose h2:not(:first-child) {
+  margin-top: 2.25rem;
+}
+
+.prose h2 {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.35rem;
+}
+
+/* 三级标题：产品/事件名称，块状区分 */
+.prose h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0 0.5rem 0.75rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--foreground);
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  border-radius: 0 4px 4px 0;
+}
+
+.prose h3:first-of-type {
+  margin-top: 0.75rem;
+}
+
+.prose p {
+  margin-top: 0.6rem;
+  color: var(--muted);
+}
+
+.prose p + p {
+  margin-top: 0.85rem;
+}
+
+.prose ul,
+.prose ol {
+  margin-top: 0.6rem;
+  margin-left: 1.35rem;
+  padding-left: 0.25rem;
+}
+
+.prose li {
+  margin-top: 0.35rem;
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin-top: 0.35rem;
+}
+
+.prose a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+.prose strong {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.prose hr {
+  margin: 1.75rem 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
