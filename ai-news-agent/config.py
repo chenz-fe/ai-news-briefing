@@ -22,6 +22,7 @@ RSS_FEEDS = {
 }
 
 # 2. LLM 大模型配置 (适配 DeepSeek / 通义千问 等国内大模型)
-LLM_API_KEY = os.getenv("LLM_API_KEY", "")
-LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://api.deepseek.com") 
-LLM_MODEL = os.getenv("LLM_MODEL", "deepseek-chat")
+# 注意：GitHub Actions 未设置的 secret 会传成空字符串，需用 or 回退默认值
+LLM_API_KEY = (os.getenv("LLM_API_KEY") or "").strip()
+LLM_BASE_URL = (os.getenv("LLM_BASE_URL") or "https://api.deepseek.com").strip()
+LLM_MODEL = (os.getenv("LLM_MODEL") or "deepseek-chat").strip()

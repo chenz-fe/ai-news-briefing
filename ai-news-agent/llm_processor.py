@@ -77,6 +77,7 @@ def summarize_news(news_list):
         return response.choices[0].message.content
     except Exception as e:
         print(f"调用大模型失败: {e}")
+        print("提示: 若在 GitHub Actions 运行，请到仓库 Settings → Secrets → Actions 中配置 LLM_API_KEY（必填），以及可选 LLM_BASE_URL、LLM_MODEL")
         return "调用大模型失败，请检查 API 配置。"
 
 if __name__ == "__main__":
