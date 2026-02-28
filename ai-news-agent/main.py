@@ -16,6 +16,11 @@ def run_agent():
     # 第二步：大模型提炼总结
     summary_markdown = summarize_news(raw_news)
     
+    # 若大模型调用失败，不保存错误信息为简报，避免错误内容被推送上线
+    if not summary_markdown or "调用大模型失败" in summary_markdown:
+        print("❌ 大模型返回异常，跳过保存。请检查 API 配置（如 GitHub Secrets：LLM_API_KEY、LLM_BASE_URL、LLM_MODEL）")
+        return
+    
     # 第三步：保存到本地
     today_str = datetime.now().strftime("%m月%d日")
     report_title = f"AI 简报：{today_str} 最值得关注的进展"
